@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { Header } from 'src/components';
 
 export default function Home() {
     return (
-        <>
+        <div className='relative h-screen'>
             <Head>
                 <title>Create Next App</title>
                 <meta
@@ -13,9 +14,10 @@ export default function Home() {
                     name='viewport'
                     content='width=device-width, initial-scale=1'
                 />
-                <link rel='icon' href='/favicon.ico' />
+                <link rel='icon' href='/logo.svg ' />
             </Head>
-            <h1 className='text-3xl font-bold underline'>Hello world!</h1>;
-        </>
+            <Header />
+            <main></main>
+        </div>
     );
 }
