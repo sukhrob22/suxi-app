@@ -3,7 +3,7 @@ import { Header } from 'src/components';
 
 export default function Home() {
     return (
-        <div className='relative h-screen'>
+        <div className='relative h-[200vh]'>
             <Head>
                 <title>Create Next App</title>
                 <meta
