@@ -377,6 +377,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-stars@npm:^2.2.4":
+  version: 2.2.4
+  resolution: "@types/react-stars@npm:2.2.4"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 0977f11bfd93d0fe26dc2068d66cea8b2824ce5b6b61ebcf07027a242462786f4690441e3606cf9063663685fb5c9b121595c01df5c76d77fba7fdd6312a150d
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:*, @types/react@npm:^18":
   version: 18.2.55
   resolution: "@types/react@npm:18.2.55"
@@ -3557,6 +3566,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-stars@npm:^2.2.5":
+  version: 2.2.5
+  resolution: "react-stars@npm:2.2.5"
+  checksum: eda738df1bfa8b68ec2fe6620c270b1f305fa4f90a9ca5c92b088a1cd7181691227d45d74b0473974d313805a197fdc57114451efeb4d98cf9ba1da9b75cb59e
+  languageName: node
+  linkType: hard
+
 "react@npm:^18":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
@@ -4101,6 +4117,7 @@ __metadata:
     "@types/node": "npm:18.13.0"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
+    "@types/react-stars": "npm:^2.2.4"
     autoprefixer: "npm:^10.0.1"
     eslint: "npm:^8"
     eslint-config-next: "npm:13.1.6"
@@ -4109,6 +4126,7 @@ __metadata:
     react: "npm:^18"
     react-dom: "npm:^18"
     react-icons: "npm:4.7.1"
+    react-stars: "npm:^2.2.5"
     tailwindcss: "npm:^3.3.0"
     tailwindcss-textshadow: "npm:^2.1.3"
     typescript: "npm:^5"
