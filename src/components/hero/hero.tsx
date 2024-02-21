@@ -10,7 +10,7 @@ const Hero = ({ trending }: HeroProps): JSX.Element => {
     // console.log(trending);
     const [movie, setMovie] = useState<IMovie>({} as IMovie);
 
-    console.log(movie);
+    // console.log(movie);
 
     useEffect(() => {
         const randomMovie = trending[Math.floor(Math.random() * trending.length)];
@@ -28,7 +28,7 @@ const Hero = ({ trending }: HeroProps): JSX.Element => {
                 />
             </div>
 
-            <div className='py-[4px] px-[8px] text-center rounded-bl-[8px] rounded-tr-[8px] bg-[#1d1d1d]/50 w-[111px]'>{movie.media_type} </div>
+            <div className='py-[4px] px-[8px] text-center rounded-bl-[8px] rounded-tr-[8px] bg-[#e5e5e5]/50 w-[111px]'>{movie.media_type} </div>
 
             <div className='flex items-center space-x-2'>
                 <ReactStars edit={false} count={10} value={movie.vote_average} color2={'#fff'} />
