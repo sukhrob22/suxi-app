@@ -1,6 +1,6 @@
 import { IMovie } from "src/interfaces/app.interface"
 
-export interface TopRated {
+export interface RowProps {
   title: string
   movies: IMovie[]
 }
