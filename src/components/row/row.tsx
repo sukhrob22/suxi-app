@@ -3,7 +3,7 @@ import Thumbnail from "../thumbnail/thumbnail"
 import { RowProps } from "./row.props"
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai"
 
-const Row = ({ title, movies }: RowProps) => {
+const Row = ({ title, movies, isBig = false }: RowProps) => {
   const [moved, setMoved] = useState<boolean>(false)
   const carouselRef = useRef<HTMLDivElement>(null)
 
@@ -34,16 +34,16 @@ const Row = ({ title, movies }: RowProps) => {
         <AiFillCaretLeft
           onClick={() => handleClick('left')}
           className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-6 w-6 cursor-pointer opacity-0 group-hover:opacity-100 transition duration-200 hover:scale-125 ${!moved && 'hidden'}`} />
-        <div ref={carouselRef} className="flex scrollbar-hide items-center space-x-1 overflow-hidden overflow-x-scroll md:space-x-4 ">
+        <div ref={carouselRef} className={`flex scrollbar-hide items-center ${!isBig && 'space-x-1 md:space-x-4'} overflow-hidden overflow-x-scroll  `}>
           {
             movies.map(movie => (
-              <Thumbnail key={movie.id} movie={movie} />
+              <Thumbnail key={movie.id} movie={movie} isBig={isBig} />
             ))
           }
         </div>
         <AiFillCaretRight
           onClick={() => handleClick('right')}
-          className={`absolute top-0 bottom-0 right-2 z-40 m-auto h-6 w-6 cursor-pointer  opacity-0 group-hover:opacity-100 transition duration-200 hover:scale-125 ${!moved && 'hidden'}`} />
+          className={`absolute top-0 bottom-0 right-2 z-40 m-auto h-6 w-6 cursor-pointer  opacity-0 group-hover:opacity-100 transition duration-200 hover:scale-125  `} />
       </div>
     </div>
   )
