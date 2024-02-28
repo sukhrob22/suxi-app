@@ -4385,7 +4385,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18":
+"react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -4427,7 +4427,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18":
+"react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
@@ -4993,8 +4993,8 @@ __metadata:
     formik: "npm:2.2.9"
     next: "npm:13.1.6"
     postcss: "npm:^8"
-    react: "npm:^18"
-    react-dom: "npm:^18"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
     react-icons: "npm:4.7.1"
     react-stars: "npm:^2.2.5"
     tailwind-scrollbar: "npm:2.1.0"

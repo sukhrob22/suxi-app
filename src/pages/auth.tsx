@@ -1,24 +1,30 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Textfiled } from 'src/components';
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
+import { AuthContext } from 'src/context/auth.context';
 
 const Auth = () => {
     const [auth, setAuth] = useState<'signup' | 'signin'>('signin')
+    const { error, isLoading, signIn, signUp, logout } = useContext(AuthContext)
 
     const toggleAuth = (state: 'signup' | 'signin') => {
         setAuth(state)
     }
 
     const onSubmit = (formData: { email: string; password: string }) => {
-        console.log(formData);
+        if (auth === 'signup') {
+            signUp(formData.email, formData.password)
+        } else {
+            signIn(formData.email, formData.password)
+        }
     }
 
     const validation = Yup.object({
         email: Yup.string().email('Enter valid email').required('Email is required'),
-        password: Yup.string().min(4, '4 minimum character').required('Password is required')
+        password: Yup.string().min(6, '6 minimum character').required('Password is required')
     })
 
     return (
@@ -41,16 +47,16 @@ const Auth = () => {
             <Formik initialValues={{ email: '', password: '' }} onSubmit={onSubmit} validationSchema={validation}>
                 <Form className='relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-10'>
                     <h1 className='text-4xl font-semibold'>{auth === 'signup' ? 'Sign up' : 'Sign In'}</h1>
+                    {error && <p className='text-red-500 font-semibold text-center'>{error}</p>}
                     <div className='space-y-4'>
                         <Textfiled name='email' placeholder='Email' type={'text'} />
                         <Textfiled name='password' placeholder='Password' type={"password"} />
                     </div>
 
-                    {auth === 'signin' ? (
-                        <button type='submit' className='w-full bg-[#E10856] mt-4 py-3 font-semibold'> Sign In</button>
-                    ) : (
-                        <button type='submit' className='w-full bg-[#E10856] mt-4 py-3 font-semibold'> Sign Up</button>
-                    )}
+                    <button type='submit' disabled={isLoading} className='w-full bg-[#E10856] mt-4 py-3 font-semibold'>
+                        {isLoading ? 'Loading...' : auth === "signin" ? 'Sign In' : 'Sign Up'}
+                    </button>
+
                     {auth === 'signin' ? (
                         <div className='text-[gray]'>
                             Not yet account? <button type='button' className='text-white hover:underline ' onClick={() => toggleAuth('signup')}> Sign Up Now</button>
