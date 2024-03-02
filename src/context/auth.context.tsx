@@ -1,5 +1,7 @@
-import { User } from "firebase/auth";
-import { ReactNode, createContext, useMemo } from "react";
+import { User, onAuthStateChanged } from "firebase/auth";
+import { useRouter } from "next/router";
+import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
+import { auth } from "src/firebase";
 import { useAuth } from "src/hooks/useAuth";
 
 
@@ -22,7 +24,9 @@ export const AuthContext = createContext<AuthContextState>({
 })
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-  const { error, isLoading, user, signIn, signUp, logout } = useAuth()
+  const { error, isLoading, user, signIn, signUp, logout, setUser, setIsLoading } = useAuth()
+  const [initialLoader, serInitialLoader] = useState<boolean>(true)
+  const router = useRouter()
 
   const value = useMemo(
     () => ({
@@ -32,9 +36,27 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     //eslint-disable-next-line
     [user, isLoading, error]
   )
+
+  useEffect(() => onAuthStateChanged(auth, user => {
+    if (user) {
+      // Ro'yhatdan o'tgan bo'lsa
+      setIsLoading(false)
+      setUser(user)
+    } else {
+      // Ro'yhatdan o'tmagan bo'lsa
+      setUser(null)
+      setIsLoading(true)
+      router.push('/auth')
+    }
+
+    setIsLoading(false)
+    serInitialLoader(false)
+    //eslint-disable-next-line
+  }), [])
+
   return (
     <AuthContext.Provider value={value}>
-      {children}
+      {!initialLoader ? children : "Loading..."}
     </AuthContext.Provider>
   )
 }

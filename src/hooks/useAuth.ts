@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, User } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, User } from 'firebase/auth'
 import { useRouter } from 'next/router';
 import { useState } from 'react'
 import { auth } from 'src/firebase'
@@ -23,7 +23,7 @@ export const useAuth = () => {
   const signIn = async (email: string, password: string) => {
     setIsLoading(true)
 
-    await createUserWithEmailAndPassword(auth, email, password).then(res => {
+    await signInWithEmailAndPassword(auth, email, password).then(res => {
       setUser(res.user)
       router.push('/')
       setIsLoading(true)
@@ -36,5 +36,5 @@ export const useAuth = () => {
     await signOut(auth).then(() => setUser(null)).catch(error => setError(error.message)).finally(() => setIsLoading(false))
   }
 
-  return { error, user, isLoading, signIn, signUp, logout }
+  return { error, user, isLoading, signIn, signUp, logout, setUser, setIsLoading }
 }

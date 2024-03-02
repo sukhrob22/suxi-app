@@ -5,10 +5,16 @@ import { Textfiled } from 'src/components';
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { AuthContext } from 'src/context/auth.context';
+import { useRouter } from 'next/router';
 
 const Auth = () => {
     const [auth, setAuth] = useState<'signup' | 'signin'>('signin')
-    const { error, isLoading, signIn, signUp, logout } = useContext(AuthContext)
+    const { error, isLoading, signIn, signUp, user } = useContext(AuthContext)
+    const router = useRouter()
+
+
+    if (user) router.push('/')
+    if (!isLoading) return <>Loading...</>
 
     const toggleAuth = (state: 'signup' | 'signin') => {
         setAuth(state)
@@ -39,8 +45,8 @@ const Auth = () => {
             <Image
                 src={'/logo.svg'}
                 alt={'logo'}
-                width={100}
-                height={100}
+                width={70}
+                height={70}
                 className={'absolute left-4 top-4 cursor-pointer object-contain'}
             />
 

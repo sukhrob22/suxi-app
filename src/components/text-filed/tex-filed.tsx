@@ -5,8 +5,8 @@ import { TextFiledProps } from "./text-filed.props"
 const Textfiled = ({ ...props }: TextFiledProps & FieldHookConfig<string>) => {
   const [field, meta] = useField(props)
 
-  console.log('Meta=>', meta);
-  console.log("IFles=>", field);
+  // console.log('Meta=>', meta);
+  // console.log("IFles=>", field);
 
 
 

@@ -1,11 +1,15 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Header, Hero, Row } from 'src/components';
+import { AuthContext } from 'src/context/auth.context';
 import { IMovie } from 'src/interfaces/app.interface';
 import { API_REQUEST } from 'src/services/api.service';
 
 export default function Home({ trending, topRated, tvTopRated, popular, documentary, comedy, family, histroy }: HomeProps): JSX.Element {
+    const { isLoading } = useContext(AuthContext)
+
+    if (isLoading) return <>{null}</>
     // console.log(trending[0].title );
 
     // useEffect(() => {
@@ -14,7 +18,7 @@ export default function Home({ trending, topRated, tvTopRated, popular, document
     //         .then((data) => console.log(data));
     // }, []);
 
-    console.log(topRated);
+    // console.log(topRated);
 
     return (
         <div className='relative min-h-screen'>
