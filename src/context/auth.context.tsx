@@ -25,7 +25,7 @@ export const AuthContext = createContext<AuthContextState>({
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const { error, isLoading, user, signIn, signUp, logout, setUser, setIsLoading } = useAuth()
-  const [initialLoader, serInitialLoader] = useState<boolean>(true)
+  const [initialLoader, setInitialLoader] = useState<boolean>(true)
   const router = useRouter()
 
   const value = useMemo(
@@ -50,7 +50,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     }
 
     setIsLoading(false)
-    serInitialLoader(false)
+    setInitialLoader(false)
     //eslint-disable-next-line
   }), [])
 
