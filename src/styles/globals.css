@@ -5,7 +5,7 @@
 /* html body */
 @layer base {
     body {
-        @apply bg-[#141414]  text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-[#E10856];
+        @apply bg-[#141414]  text-white  !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-[#E10856];
     }
 
     header {
@@ -23,6 +23,6 @@
         @apply w-full rounded bg-[#333] px-5 py-4 placeholder-[gray] outline-none focus:bg-[#454545]
     }
     .modalButton{
-        @apply flex items-center justify-center rounded-full hover:bg-[#181818]/70 transition-all hover:scale-125
-    }
+        @apply flex h-11 w-11 items-center justify-center rounded-full border-2 border-[gray] bg-[#2a2a2a]/60 transition hover:border-white hover:bg-white/10
+}  
 }
