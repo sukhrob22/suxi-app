@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useContext, useEffect } from 'react';
-import { Header, Hero, Modal, Row } from 'src/components';
+import { Header, Hero, Modal, Row, SubscriptionPlan } from 'src/components';
 import { AuthContext } from 'src/context/auth.context';
 import { IMovie } from 'src/interfaces/app.interface';
 import { API_REQUEST } from 'src/services/api.service';
@@ -10,8 +10,11 @@ import { useInfoStore } from 'src/store';
 export default function Home({ trending, topRated, tvTopRated, popular, documentary, comedy, family, histroy }: HomeProps): JSX.Element {
     const { isLoading } = useContext(AuthContext)
     const { modal } = useInfoStore()
+    const subscription = false
 
     if (isLoading) return <>{null}</>
+
+    if (!subscription) return <SubscriptionPlan />
     // console.log(trending[0].title );
 
     // useEffect(() => {
