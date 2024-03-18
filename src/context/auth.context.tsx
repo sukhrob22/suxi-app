@@ -30,7 +30,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
   const value = useMemo(
     () => ({
-      user, error, isLoading, logout, signIn, signUp,
+      user, error, isLoading, logout, signIn, signUp, setIsLoading
     }),
 
     //eslint-disable-next-line
